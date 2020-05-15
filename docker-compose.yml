@@ -6,7 +6,7 @@ services:
       context: '.'
       dockerfile: .docker/php/Dockerfile
       args:
-        uid: ${UID}
+        uid: deploy
     container_name: laravel-app
     environment:
       - APACHE_RUN_USER=#${UID}
