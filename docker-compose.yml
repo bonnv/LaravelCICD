@@ -5,12 +5,7 @@ services:
     build:
       context: '.'
       dockerfile: .docker/php/Dockerfile
-      args:
-        uid: deploy
     container_name: laravel-app
-    environment:
-      - APACHE_RUN_USER=#${UID}
-      - APACHE_RUN_GROUP=#${UID}
     volumes:
       - .:/var/www/html
     ports:
