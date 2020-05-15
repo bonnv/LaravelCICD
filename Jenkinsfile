@@ -26,13 +26,13 @@ node {
 
 	stage("Build Docker"){
 		//sh 'rsync -avzhP --delete --exclude=.git/ --exclude=Jenkinsifle $WORKSPACE/ root@192.168.1.112:/root/docker/'
-		//build docker & mount source to /var/www/LaravelCICD
+		//build docker & mount source to /var/www/html
 		//sh 'cd /root/docker/ && bash docker-compose.sh'
 		sh 'bash docker-compose.sh'
 	}
 	
     stage("deploy_product") {
-        sh 'cd /var/www/LaravelCICD'
-        sh 'git pull origin master'
+        //sh 'cd /var/www/html'
+        //sh 'git pull origin master'
     }
 }
