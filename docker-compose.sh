@@ -9,5 +9,5 @@ if [[ $? -eq 0 ]]; then
 else
     echo "Creating docker containers for NGINX MARIADB PHP7.2"
     sleep 2
-    docker-compose up -d
+    sudo docker-compose up -d
 fi
