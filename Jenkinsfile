@@ -14,6 +14,9 @@ node {
     stage("environment") {
         sh 'cp .env.example .env'
         sh 'php artisan key:generate'
+        sh 'php artisan config:clear'
+		sh 'php artisan config:cache'
+		sh 'php artisan optimize'
     }
 
     stage("check_convention") {
@@ -26,13 +29,11 @@ node {
 
 	stage("Build Docker"){
 		//sh 'rsync -avzhP --delete --exclude=.git/ --exclude=Jenkinsifle $WORKSPACE/ root@192.168.1.112:/root/docker/'
-		//build docker & mount source to /var/www/html
-		//sh 'cd /root/docker/ && bash docker-compose.sh'
 		sh 'bash docker-compose.sh'
 	}
 	
     stage("deploy_product") {
-        sh 'cd /var/www/html'
+        sh 'cd /var/www/LaravelCICD'
         sh 'git pull origin master'
     }
 }
