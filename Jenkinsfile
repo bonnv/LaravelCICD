@@ -15,6 +15,7 @@ node {
     stage("environment") {
         sh 'cp .env.example .env'
         sh 'php artisan key:generate'
+        sh 'php artisan key:generate --env=testing'
         sh 'php artisan cache:clear'
     }
 
