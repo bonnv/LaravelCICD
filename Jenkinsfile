@@ -32,7 +32,7 @@ node {
 	}
 	
     stage("deploy_product") {
-        //sh 'cd /var/www/html'
-        //sh 'git pull origin master'
+        sh 'cd /var/www/html'
+        sh 'git pull origin master'
     }
 }
