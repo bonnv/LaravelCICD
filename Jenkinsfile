@@ -21,12 +21,9 @@ node {
 
     stage("check_convention") {
         sh 'phpcs --standard=PSR2 app'
+		//sh 'find . -name "*.php" -print0 | xargs -0 -n1 php -l'
     }
 	
-	stage("php_lint") {
-        sh 'find . -name "*.php" -print0 | xargs -0 -n1 php -l'
-    }
-
     stage("phpunit") {
         sh 'vendor/bin/phpunit --testsuite Feature'
     }
