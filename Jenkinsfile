@@ -9,6 +9,7 @@ node {
     
     stage("composer_install") {
         sh 'composer install --ignore-platform-reqs'
+        sh 'php artisan dump-autoload'
     }
 
     stage("environment") {
