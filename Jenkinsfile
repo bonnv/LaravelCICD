@@ -32,6 +32,6 @@ node {
         sh 'sudo cp -r $WORKSPACE/ /var/www/LaravelCICD/'
         //sh 'rsync -avzhP --delete --exclude=.git/ $WORKSPACE/ /var/www/LaravelCICD/'
         //sh 'chown -R devuser:devuser /var/www/LaravelCICD'
-        //sh 'cd /var/www/LaravelCICD/ && bash docker-compose.sh'
+        sh 'cd /var/www/LaravelCICD/ && bash docker-compose.sh'
     }
 }
