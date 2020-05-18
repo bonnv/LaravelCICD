@@ -21,16 +21,16 @@ node {
 
     stage("check_convention") {
         sh 'phpcs --standard=PSR2 app'
-		//sh 'find . -name "*.php" -print0 | xargs -0 -n1 php -l'
+        //sh 'find . -name "*.php" -print0 | xargs -0 -n1 php -l'
     }
-	
+    
     stage("phpunit") {
         sh 'vendor/bin/phpunit'
     }
 
-	stage("deploycode"){
-	    sh 'sudo rsync -avzhP --delete --exclude=.git/ $WORKSPACE/ /var/www/LaravelCICD/'
-		//sh 'chown -R devuser:devuser /var/www/LaravelCICD'
-		sh 'cd /var/www/LaravelCICD/ && bash docker-compose.sh'
-	}
+    stage("deploycode"){
+        sh 'sudo rsync -avzhP --delete --exclude=.git/ $WORKSPACE/ /var/www/LaravelCICD/'
+        //sh 'chown -R devuser:devuser /var/www/LaravelCICD'
+        sh 'cd /var/www/LaravelCICD/ && bash docker-compose.sh'
+    }
 }
