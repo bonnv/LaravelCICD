@@ -16,7 +16,7 @@ node {
         sh 'cp .env.example .env'
         sh 'php artisan key:generate'
         sh 'php artisan cache:clear'
-        sh 'php artisan confg:cache'
+        sh 'php artisan config:cache'
     }
 
     stage("check_convention") {
