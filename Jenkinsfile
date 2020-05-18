@@ -16,7 +16,6 @@ node {
         sh 'php artisan key:generate'
         sh 'php artisan config:clear'
 		sh 'php artisan config:cache'
-		sh 'php artisan optimize'
     }
 
     stage("check_convention") {
