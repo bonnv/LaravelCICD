@@ -1,5 +1,5 @@
 #!/bin/bash
-PORT="8081"
+PORT="8088"
 
 #Check port exists
 netstat -nta |grep -i listen |grep $PORT &>/dev/null
