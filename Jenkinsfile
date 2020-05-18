@@ -25,7 +25,7 @@ node {
     }
 	
     stage("phpunit") {
-        sh 'vendor/bin/phpunit --testsuite Feature'
+        sh 'vendor/bin/phpunit'
     }
 
 	stage("Build Docker"){
