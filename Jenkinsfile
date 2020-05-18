@@ -3,7 +3,7 @@ node {
         git credentialsId: 'github_user', url: 'https://github.com/bonnv/LaravelCICD.git'
     }
 
-    stage("Checkout") {
+    stage("checkout") {
         checkout scm
     }
     
@@ -28,13 +28,9 @@ node {
         sh 'vendor/bin/phpunit'
     }
 
-	stage("Build Docker"){
-		//sh 'rsync -avzhP --delete --exclude=.git/ --exclude=Jenkinsifle $WORKSPACE/ root@192.168.1.112:/root/docker/'
+	stage("deploycode"){
+	    sh 'rsync -avzhP --delete --exclude=.git/ --exclude=Jenkinsifle $WORKSPACE/ /var/www/LaravelCICD/'
+		sh 'chown -R devuser:devuser /var/www/LaravelCICD'
 		sh 'bash docker-compose.sh'
 	}
-	
-    stage("deploy_product") {
-        sh 'cd /var/www/LaravelCICD'
-        sh 'git pull origin master'
-    }
 }
